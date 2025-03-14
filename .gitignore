@@ -55,3 +55,6 @@ tools/decompme
 # direnv
 .direnv/
 .envrc.private
+
+# other stuff
+*.Identifier

@@ -69,6 +69,10 @@ bool isEqualSubString(const char* pString1, const char* pString2) {
     return isEqualSubString(str1, str2);
 }*/
 
+void extractString(char *pOut, const char *pIn, u32 len, u32) {
+    strncpy(pOut, pIn, len)[len] = 0;
+}
+
 bool isStartWithString(const char* pString1, const char* pString2) {
     if (!*pString2)
         return true;
