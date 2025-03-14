@@ -122,4 +122,18 @@ namespace al {
         device->tryGetFileSize(&size, rFile);
         return size;
     }
+
+    /*
+    const void* Resource::getFile(const sead::SafeString &rFile) const {
+        const Resource* cur = mPatchRes;
+
+        if (cur != nullptr) {
+            while (cur->isExistFile(rFile)) {
+                cur = cur->mPatchRes;
+            }
+        }
+
+        return cur->mArchive->getFile(rFile);
+    }
+    */
 };

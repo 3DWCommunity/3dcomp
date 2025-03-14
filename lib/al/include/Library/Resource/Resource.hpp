@@ -19,7 +19,7 @@ public:
     void getEntryName(sead::BufferedSafeString *, const sead::SafeString &, u32) const;
     u32 getFileSize(const sead::SafeString &) const;
     const u8* getByml(const sead::SafeString &) const;
-    void* getFile(const sead::SafeString &) const;
+    const void* getFile(const sead::SafeString &) const;
 
     // ...
 
