@@ -2,7 +2,7 @@
 
 namespace al {
     SceneStopCtrl::SceneStopCtrl() { 
-        
+
     }
 
     void SceneStopCtrl::reqeustStopScene(int a1, int a2, bool a3, bool a4) {
@@ -24,23 +24,14 @@ namespace al {
         _9 = a4;
     }
 
-    // https://decomp.me/scratch/7wXTT
     void SceneStopCtrl::update() {
-        int val = _4;
-
-        if (val-- < 0) {
-            int otherVal = _0;
-
-            if (otherVal-- < 0) {
-                _8 = false;
-                _9 = false;
-            }
-            else {
-                _0 = otherVal;
-            }
-        }
-        else {
-            _4 = val;
+        if (_4 >= 1)
+            _4--;
+        else if (_0 >= 1) {
+            _0--;
+        } else {
+            _8 = false;
+            _9 = false;
         }
     }
 };
