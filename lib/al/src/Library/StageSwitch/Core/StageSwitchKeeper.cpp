@@ -32,7 +32,7 @@ void StageSwitchKeeper::init(StageSwitchDirector* pDirector, const PlacementInfo
             tryGetPlacementID(&placement, curPlacement);
             bool isDisaster = false;
             tryGetArg(&isDisaster, curPlacement, "IsDisasterCameraOn");
-            mAccessors[curIndex].setThing(_10);
+            mAccessors[curIndex].setThing((void*)_10);
             mAccessors[curIndex].init(pDirector, keyName, placement, isDisaster);
             curIndex++;
         }
