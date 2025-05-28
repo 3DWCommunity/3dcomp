@@ -8,6 +8,7 @@ namespace al {
 class ActorInitInfo;
 struct PlacementInfo;
 class PlacementId;
+class LiveActor;
 
 bool tryGetZoneMatrixTR(sead::Matrix34f*, const ActorInitInfo&);
 bool tryGetZoneID(s32*, const PlacementInfo&);
@@ -54,6 +55,10 @@ bool tryGetPlacementInfoAndKeyNameByIndex(PlacementInfo*, const char**, const Pl
 bool tryGetPlacementInfoByIndex(PlacementInfo*, const PlacementInfo&, s32);
 
 s32 calcLinkChildNum(const ActorInitInfo&, const char*);
+
+const char* getLinksActorDisplayName(const ActorInitInfo &, const char *, int);
+
+void initLinksActor(LiveActor *, const ActorInitInfo &, const char *, int);
 
 }  // namespace al
 

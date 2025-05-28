@@ -8,7 +8,7 @@ namespace al {
     class LiveActor;
     class ActorInitInfo;
     class Nerve;
-    class PlacementInfo;
+    struct PlacementInfo;
 
     void initActorChangeModelSuffix(LiveActor*, const ActorInitInfo&, const char*);
     void initActorWithArchiveName(LiveActor*, const ActorInitInfo&, const sead::SafeString&,
