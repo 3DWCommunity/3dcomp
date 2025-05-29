@@ -38,7 +38,7 @@ jobs:
 
     - name: Generate progress.json
       run: |
-        python3 tools/progress.py
+        python3 tools/common/progress.py
 
     - name: Commit and push progress.json if changed
       run: |
