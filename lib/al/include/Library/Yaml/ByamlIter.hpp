@@ -8,7 +8,7 @@ class ByamlData;
 class ByamlIter {
 public:
     ByamlIter();
-    ByamlIter(const u8*, const u8*);
+    ByamlIter(const u8 *);
     ByamlIter(const ByamlIter&);
 
     bool isValid() const;

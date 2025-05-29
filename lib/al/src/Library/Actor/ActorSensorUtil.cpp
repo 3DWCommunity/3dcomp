@@ -1,6 +1,4 @@
-#include "Library/Actor/ActorSensorUtil.hpp"
-
-#include "Library/Actor/ActorModelUtil.hpp"
+#include "Library/ActorUtil.hpp"
 #include "Library/Actor/ActorSensorController.hpp"
 #include "Library/HitSensor/HitSensor.hpp"
 #include "Library/HitSensor/HitSensorKeeper.hpp"

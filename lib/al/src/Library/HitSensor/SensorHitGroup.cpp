@@ -1,5 +1,4 @@
 #include "Library/HitSensor/SensorHitGroup.hpp"
-
 #include "Library/HitSensor/HitSensor.hpp"
 
 namespace al {

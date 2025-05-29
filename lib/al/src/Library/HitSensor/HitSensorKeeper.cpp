@@ -2,7 +2,7 @@
 
 #include "Library/HitSensor/HitSensor.hpp"
 #include "Library/LiveActor/LiveActor.hpp"
-#include "Library/LiveActor/LiveActorUtil.hpp"
+#include "Library/ActorUtil.hpp"
 #include "Project/Base/StringUtil.hpp"
 
 namespace al {
@@ -40,7 +40,7 @@ void HitSensorKeeper::attackSensor() {
         if (baseSensor->mNumSensors != 0) {
             for (s32 i = 0; i < baseSensor->mNumSensors; i++) {
                 HitSensor* childSensor = baseSensor->mSensors[i];
-                if (!isDead(childSensor->mHostActor))
+                if (!al::isDead(childSensor->mHostActor))
                     baseSensor->mHostActor->attackSensor(baseSensor, childSensor);
             }
         }
@@ -81,7 +81,7 @@ HitSensor* HitSensorKeeper::getSensor(const char* pName) const {
         return *mSensors;
 
     for (s32 i = 0; i < mSensorCount; i++)
-        if (isEqualString(mSensors[i]->mName, pName))
+        if (al::isEqualString(mSensors[i]->mName, pName))
             return mSensors[i];
 
     return nullptr;

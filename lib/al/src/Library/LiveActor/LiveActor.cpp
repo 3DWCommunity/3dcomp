@@ -1,14 +1,6 @@
 #include "Library/LiveActor/LiveActor.hpp"
-
-#include "Library/Actor/ActorClippingUtil.hpp"
 #include "Library/Actor/ActorInitInfo.hpp"
-#include "Library/Actor/ActorMapUtil.hpp"
-#include "Library/Actor/ActorModelUtil.hpp"
-#include "Library/Actor/ActorMovementUtil.hpp"
 #include "Library/Actor/ActorPoseKeeper.hpp"
-#include "Library/Actor/ActorPoseUtil.hpp"
-#include "Library/Actor/ActorSceneInfo.hpp"
-#include "Library/Actor/ActorSceneUtil.hpp"
 #include "Library/Execute/ActorExecuteDb.hpp"
 #include "Library/Execute/ActorSystemFunction.hpp"
 #include "Library/HitSensor/HitSensor.hpp"
@@ -17,13 +9,14 @@
 #include "Library/Light/LppActor.hpp"
 #include "Library/LiveActor/LiveActorFlag.hpp"
 #include "Library/LiveActor/LiveActorFunc.hpp"
-#include "Library/LiveActor/LiveActorUtil.hpp"
 #include "Library/LiveActor/SubActorUtil.hpp"
 #include "Library/Model/Core/ModelKeeper.hpp"
 #include "Library/Screen/ScreenPointKeeper.hpp"
 #include "Library/Sequence/DemoDirector.hpp"
 #include "Library/Shadow/Common/ShadowUtil.hpp"
 #include "Library/Shadow/ShadowKeeper.hpp"
+#include "Library/LiveActor/Util/ActorSceneInfo.hpp"
+#include "Library/ActorUtil.hpp"
 #include "Project/Action/Common/ActionSeCtrl.hpp"
 #include "Project/Action/Common/ActorActionKeeper.hpp"
 #include "Project/Audio/AudioKeeper.hpp"
@@ -56,7 +49,7 @@ LiveActor::~LiveActor() {
 }
 
 void LiveActor::initAfterPlacement() {
-    tryInitFixedModelGpuBuffer(this);
+    al::tryInitFixedModelGpuBuffer(this);
 
     if (mLightKeeper != nullptr)
         mLightKeeper->initAfterPlacement();
@@ -82,18 +75,18 @@ void LiveActor::makeActorAppeared() {
 
     mActorFlags->isDead = false;
 
-    if (isClipped(this))
+    if (al::isClipped(this))
         endClipped();
 
-    if (!isHideModel(this)) {
+    if (!al::isHideModel(this)) {
         if (mModelKeeper != nullptr)
             mModelKeeper->show();
     }
 
-    resetPosition(this, false);
+    al::resetPosition(this, false);
 
     if (mCollisionParts != nullptr)
-        validateCollisionPartsBySystem(this);
+        al::validateCollisionPartsBySystem(this);
 
     if (mHitSensorKeeper != nullptr)
         mHitSensorKeeper->update();
@@ -102,7 +95,7 @@ void LiveActor::makeActorAppeared() {
 
     if (mActorExecuteInfo != nullptr) {
         alActorSystemFunction::addToExecutorMovement(this);
-        if (!isHideModel(this) && mActorExecuteInfo->mNumDrawerBases >= 1)
+        if (!al::isHideModel(this) && mActorExecuteInfo->mNumDrawerBases >= 1)
             alActorSystemFunction::addToExecutorDraw(this);
     }
 
@@ -110,9 +103,9 @@ void LiveActor::makeActorAppeared() {
         getAudioKeeper()->appear();
 
     if (mLightKeeper != nullptr)
-        mLightKeeper->appear(isHideModel(this));
+        mLightKeeper->appear(al::isHideModel(this));
 
-    if (mShadowKeeper != nullptr && !isHideModel(this))
+    if (mShadowKeeper != nullptr && !al::isHideModel(this))
         mShadowKeeper->show();
 
     if (mSubActorKeeper != nullptr)
@@ -132,7 +125,7 @@ void LiveActor::makeActorDead() {
         endFarLod();
 
     if (mActorPoseKeeper != nullptr)
-        setVelocityZero(this);
+        al::setVelocityZero(this);
 
     mActorFlags->isDead = true;
 
@@ -148,7 +141,7 @@ void LiveActor::makeActorDead() {
         mCollider->onInvalidate();
 
     if (mCollisionParts != nullptr)
-        invalidateCollisionPartsBySystem(this);
+        al::invalidateCollisionPartsBySystem(this);
 
     if (mModelKeeper != nullptr)
         mModelKeeper->hide();
@@ -178,15 +171,15 @@ void LiveActor::makeActorDead() {
 
 bool LiveActor::showActor() {
     if (mActorFlags->_1c) {
-        if (isDead(this))
+        if (al::isDead(this))
             return true;
     } else {
-        validateClipping(this);
-        if (isDead(this))
+        al::validateClipping(this);
+        if (al::isDead(this))
             return true;
     }
 
-    if (mActorFlags->_1c && isClipped(this))
+    if (mActorFlags->_1c && al::isClipped(this))
         endClipped();
 
     if (mCollisionParts != nullptr) {
@@ -198,11 +191,11 @@ bool LiveActor::showActor() {
 }
 
 bool LiveActor::hideActor() {
-    if (!mActorFlags->_1c && !isDead(this))
-        invalidateClipping(this);
+    if (!mActorFlags->_1c && !al::isDead(this))
+        al::invalidateClipping(this);
 
     if (!isDead(this)) {
-        if (!isClipped(this))
+        if (!al::isClipped(this))
             startClipped();
 
         if (mCollisionParts != nullptr)
@@ -225,7 +218,7 @@ void LiveActor::changeScenarioID(s32, bool) {
 }
 
 void LiveActor::updateLinkedTrans(const sead::Vector3f& rVector) {
-    setTrans(this, rVector);
+    al::setTrans(this, rVector);
 }
 
 // LiveActor::movementPaused
