@@ -1,0 +1,57 @@
+name: Build and Update Progress
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repo
+      uses: actions/checkout@v3
+      with:
+        submodules: recursive
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.x'
+
+    - name: Install dependencies
+      run: |
+        sudo apt update
+        sudo apt install -y python3 ninja-build cmake ccache xdelta3 clang libssl-dev libncurses5
+        pip install capstone colorama cxxfilt pyelftools watchdog python-Levenshtein toml
+
+    - name: Set up NSO
+      run: |
+        curl -L -o fury.nso https://shibbo.net/3dw/fury.nso
+        python3 tools/setup.py fury.nso
+
+    - name: Build
+      run: |
+        python3 tools/build.py
+
+    - name: Generate progress.json
+      run: |
+        python3 tools/progress.py
+
+    - name: Commit and push progress.json if changed
+      run: |
+        git config user.name "github-actions"
+        git config user.email "github-actions@github.com"
+
+        git add data/progress.json || true
+
+        if git diff --cached --quiet; then
+          echo "No changes to progress.json"
+        else
+          git commit -m "Update progress badge [auto]"
+          git push https://x-access-token:${{ secrets.GH_TOKEN }}@github.com/${{ github.repository }}.git HEAD:main
+        fi
+      env:
+        GH_TOKEN: ${{ secrets.GH_TOKEN }}
