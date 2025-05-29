@@ -23,9 +23,11 @@ jobs:
 
     - name: Install dependencies
       run: |
+        wget http://archive.ubuntu.com/ubuntu/pool/universe/n/ncurses/libtinfo5_6.3-2_amd64.deb
+        sudo dpkg -i libtinfo5_6.3-2_amd64.deb
+        rm -f libtinfo5_6.3-2_amd64.deb
         sudo apt update
-        sudo apt install -y python3 ninja-build cmake ccache xdelta3 clang libssl-dev libncurses5
-        pip install capstone colorama cxxfilt pyelftools watchdog python-Levenshtein toml
+        sudo apt install -y python3 ninja-build cmake ccache xdelta3 clang libssl-dev
 
     - name: Set up NSO
       run: |
