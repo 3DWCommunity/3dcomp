@@ -33,8 +33,11 @@ class StageSwitchDirector;
 
 class ActorInitInfo {
 public:
+    ActorInitInfo();
 
     void initViewIdSelf(const PlacementInfo *, const ActorInitInfo &);
+
+    void initViewIdHostActor(const ActorInitInfo &, const LiveActor *);
 
     PlacementInfo* mPlacementInfo;
     LayoutInitInfo* mLayoutInitInfo;

@@ -4,6 +4,8 @@ namespace al {
     class ClippingJudge;
     class LiveActor;
 
+    void addToHostActorClipping(LiveActor *, const LiveActor *);
+
     ClippingJudge* getClippingJudge(LiveActor*);
 
     bool isClipped(const LiveActor*);

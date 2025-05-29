@@ -1,6 +1,7 @@
 #include "Project/BlockRail/BlockRail.hpp"
 #include "Project/BlockRail/BlockRailLink.hpp"
 #include "Library/ActorUtil.hpp"
+#include "Project/Matrix/MatrixUtil.hpp"
 #include "Library/Yaml/ByamlIter.hpp"
 #include "Library/Play/Placement/PlacementFunction.hpp"
 
@@ -74,5 +75,47 @@ namespace al {
                 return;
             }
         }
+    }
+    
+    void BlockRail::createRailEnd(const ActorInitInfo &rInfo, const sead::Vector3f &rPos, const sead::Vector3f &rDir, LiveActor **pActor) {
+        if (mEndModel != nullptr) {
+            ActorInitInfo info;
+            info.initViewIdHostActor(rInfo, this);
+            auto railEmptyActor = new LiveActor("ブロックレール空終端");
+            if (rInfo._78) {
+                al::addToHostActorClipping(railEmptyActor, this);
+            }
+
+            al::initActorWithArchiveName(railEmptyActor, info, mEndModel, nullptr);
+            sead::Vector3f up;
+            al::calcUpDir(&up, this);
+            sead::Matrix34f upFrontPos;
+            al::makeMtxUpFrontPos(&upFrontPos, up, rDir, rPos);
+            al::updatePoseMtx(railEmptyActor, &upFrontPos);
+
+            if (al::isExistModel(this) && al::tryStartMclAnimIfExist(railEmptyActor, "RailColor")) {
+                al::setMclAnimFrameAndStop(railEmptyActor, mRailColor);
+            }
+
+            if (al::isAlive(this)) {
+                railEmptyActor->appear();
+
+                if (pActor == nullptr) {
+                    return;
+                }
+            }
+            else {
+                railEmptyActor->kill();
+                if (pActor == nullptr) {
+                    return;
+                }
+            }
+
+            *pActor = railEmptyActor;
+        }
+    }
+
+    BlockRail::~BlockRail() {
+        
     }
 };
