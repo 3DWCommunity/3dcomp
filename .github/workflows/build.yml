@@ -8,7 +8,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     steps:
     - name: Checkout repo
@@ -38,7 +38,7 @@ jobs:
 
     - name: Generate progress.json
       run: |
-        python3 tools/progress.py
+        python3 tools/common/progress.py
 
     - name: Commit and push progress.json if changed
       run: |
