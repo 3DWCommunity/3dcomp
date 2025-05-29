@@ -20,8 +20,8 @@ namespace al {
 
         virtual const char* convertName(const char *) const;
 
-        const char* mName;                  // 0x08
-        NameToCreator<T>* mFuncs;           // 0x10
-        s32 mNumEntries;                    // 0x18
+        const char* mName;                          // 0x08
+        const NameToCreator<T>* mFuncs;             // 0x10
+        s32 mNumEntries;                            // 0x18
     };
 };
