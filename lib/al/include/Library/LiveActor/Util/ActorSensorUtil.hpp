@@ -20,6 +20,12 @@ namespace al {
         return sead::IsDerivedFrom<SensorMsg##name>(pMsg);              \
     }
 
+    void setSensorRadius(LiveActor *, const char *, f32);
+    void setSensorRadius(LiveActor *, f32);
+    f32 getSensorRadius(const LiveActor *, const char *);
+    f32 getSensorRadius(const LiveActor *, int);
+    f32 getSensorRadius(const LiveActor *);
+
     bool isSensorSimple(const HitSensor*);
     void updateHitSensorsAll(LiveActor*);
     bool isMySensor(const HitSensor*, LiveActor*);

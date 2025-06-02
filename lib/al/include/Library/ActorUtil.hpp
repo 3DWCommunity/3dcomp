@@ -12,3 +12,5 @@
 #include "Library/LiveActor/Util/ActorResourceUtil.hpp"
 #include "Library/LiveActor/Util/ActorSceneUtil.hpp"
 #include "Library/LiveActor/Util/ActorSensorUtil.hpp"
+#include "Library/Light/LightUtil.hpp"
+#include "Library/Shadow/Common/ShadowUtil.hpp"

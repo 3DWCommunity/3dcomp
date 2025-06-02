@@ -4,6 +4,7 @@
 
 #include "Library/Nerve/Nerve.hpp"
 #include "Library/Nerve/NerveAction.hpp"
+#include "Library/Nerve/NerveKeeper.hpp"
 #include "Project/Base/Macro.hpp"
 
 #define NERVE_DECL(Class, Action)                                                                  \

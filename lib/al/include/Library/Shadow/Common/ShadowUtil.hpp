@@ -1,13 +1,16 @@
 #pragma once
 
 namespace al {
-class LiveActor;
+    class LiveActor;
 
-bool isExistShadow(LiveActor*);
-bool isExistShadow(LiveActor*, const char*);
-bool isHideShadow(const LiveActor*);
-void hideShadow(LiveActor*);
-void showShadow(LiveActor*);
-void hideShadowDepth(LiveActor*);
-void showShadowDepth(LiveActor*);
-}  // namespace al
+    bool isExistShadow(LiveActor*);
+    bool isExistShadow(LiveActor*, const char*);
+    bool isHideShadow(const LiveActor*);
+    void hideShadow(LiveActor*);
+    void showShadow(LiveActor*);
+    void hideShadowDepth(LiveActor*);
+    void showShadowDepth(LiveActor*);
+
+    void setShadowFixed(LiveActor * , bool);
+    
+};
