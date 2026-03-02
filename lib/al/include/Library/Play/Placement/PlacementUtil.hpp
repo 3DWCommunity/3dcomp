@@ -19,20 +19,24 @@ namespace al {
     bool isObjectNameSubStr(const ActorInitInfo&, const char*);
     bool isObjectNameSubStr(const PlacementInfo&, const char*);
 
-    bool tryGetClassName(const char **, const ActorInitInfo &);
-    bool tryGetClassName(const char **, const PlacementInfo &);
-    bool tryGetPlacementInfoByKey(PlacementInfo *, const PlacementInfo &, const char *);
-    void getClassName(const char **, const ActorInitInfo &);
-    void getClassName(const char **, const PlacementInfo &);
-    bool isClassName(const ActorInitInfo &, const char *);
-    bool isClassName(const PlacementInfo &, const char *);
-    void getDisplayName(const char **, const ActorInitInfo &);
-    bool tryGetDisplayName(const char **, const ActorInitInfo &);
-    void getDisplayName(const char **, const PlacementInfo &);
-    bool tryGetDisplayName(const char **, const PlacementInfo &);
-    void getPlacementTargetFile(const char **, const PlacementInfo &);
-    bool tryGetTrans(sead::Vector3f *, const ActorInitInfo &);
-    bool tryGetTrans(sead::Vector3f *, const PlacementInfo &);
-    void multZoneMtx(sead::Vector3f *, const PlacementInfo &);
-    void getTrans(sead::Vector3f *, const PlacementInfo &);
+    bool tryGetClassName(const char**, const ActorInitInfo&);
+    bool tryGetClassName(const char**, const PlacementInfo&);
+    bool tryGetPlacementInfoByKey(PlacementInfo*, const PlacementInfo&, const char*);
+    void getClassName(const char**, const ActorInitInfo&);
+    void getClassName(const char**, const PlacementInfo&);
+    bool isClassName(const ActorInitInfo&, const char*);
+    bool isClassName(const PlacementInfo&, const char*);
+    void getDisplayName(const char**, const ActorInitInfo&);
+    bool tryGetDisplayName(const char**, const ActorInitInfo&);
+    void getDisplayName(const char**, const PlacementInfo&);
+    bool tryGetDisplayName(const char**, const PlacementInfo&);
+    void getPlacementTargetFile(const char**, const PlacementInfo&);
+    bool tryGetTrans(sead::Vector3f*, const ActorInitInfo&);
+    bool tryGetTrans(sead::Vector3f*, const PlacementInfo&);
+    void multZoneMtx(sead::Vector3f*, const PlacementInfo&);
+    void getTrans(sead::Vector3f*, const PlacementInfo&);
+
+    bool tryGetArg(int*, const ActorInitInfo&, const char*);
+    bool tryGetArg(f32*, const ActorInitInfo&, const char*);
+    bool tryGetArg(bool*, const ActorInitInfo&, const char*);
 }  // namespace al

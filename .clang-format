@@ -7,22 +7,22 @@ AlignConsecutiveDeclarations: false
 AlignOperands:   true
 AlignTrailingComments: true
 AllowAllParametersOfDeclarationOnNextLine: true
-AllowShortBlocksOnASingleLine: Never
 AllowShortCaseLabelsOnASingleLine: false
-AllowShortFunctionsOnASingleLine: Inline
+AllowShortFunctionsOnASingleLine: None
 AllowShortIfStatementsOnASingleLine: Never
-AllowShortLoopsOnASingleLine: false
 AlwaysBreakAfterDefinitionReturnType: None
 AlwaysBreakAfterReturnType: None
 AlwaysBreakBeforeMultilineStrings: false
 AlwaysBreakTemplateDeclarations: Yes
 BinPackArguments: true
 BinPackParameters: true
+BraceWrapping:
+  AfterControlStatement: true
 BreakBeforeBinaryOperators: None
 BreakBeforeBraces: Attach
 BreakBeforeTernaryOperators: false
 BreakConstructorInitializersBeforeComma: false
-ColumnLimit:     100
+ColumnLimit:     150
 CommentPragmas:  '^ (IWYU pragma:|NOLINT)'
 ConstructorInitializerAllOnOneLineOrOnePerLine: false
 ConstructorInitializerIndentWidth: 4
@@ -32,11 +32,11 @@ DerivePointerAlignment: false
 DisableFormat:   false
 ForEachMacros:   []
 IncludeCategories:
-  - Regex:           '^<[Ww]indows\.h>$'
+  - Regex:           '^"'
     Priority:        1
   - Regex:           '^<'
     Priority:        2
-  - Regex:           '^"'
+  - Regex:           '^<[Ww]indows\.h>$'
     Priority:        3
 IndentCaseLabels: false
 IndentWidth:     4
@@ -45,7 +45,7 @@ KeepEmptyLinesAtTheStartOfBlocks: false
 MacroBlockBegin: ''
 MacroBlockEnd:   ''
 MaxEmptyLinesToKeep: 1
-NamespaceIndentation: None
+NamespaceIndentation: All
 ObjCBlockIndentWidth: 4
 ObjCSpaceAfterProperty: false
 ObjCSpaceBeforeProtocolList: true
@@ -57,21 +57,16 @@ PenaltyExcessCharacter: 1000000
 PenaltyReturnTypeOnItsOwnLine: 60
 PointerAlignment: Left
 ReflowComments:  true
-RemoveBracesLLVM: true
-SeparateDefinitionBlocks: Always
 SortIncludes:    true
 SpaceAfterCStyleCast: false
 SpaceBeforeAssignmentOperators: true
 SpaceBeforeParens: ControlStatements
 SpaceInEmptyParentheses: false
 SpacesBeforeTrailingComments: 2
-SpacesInAngles:  false
+SpacesInAngles:  true
 SpacesInContainerLiterals: true
 SpacesInCStyleCastParentheses: false
 SpacesInParentheses: false
 SpacesInSquareBrackets: false
-Standard: c++17
 TabWidth:        4
 UseTab:          Never
-WhitespaceSensitiveMacros: ["SEAD_ENUM", "SEAD_ENUM_EX", "SEAD_ENUM_EX_VALUES"]
-...

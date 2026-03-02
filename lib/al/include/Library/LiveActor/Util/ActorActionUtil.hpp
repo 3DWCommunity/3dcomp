@@ -21,4 +21,4 @@ namespace al {
     void setActionFrame(LiveActor*, f32);
 
     void startNerveAction(LiveActor*, const char*);
-};
+};  // namespace al

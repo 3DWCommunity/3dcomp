@@ -4,12 +4,12 @@
 
 class BlockEmpty : public al::LiveActor {
 public:
-    BlockEmpty(const char *, const char *);
+    BlockEmpty(const char*, const char*);
 
     virtual ~BlockEmpty();
-    virtual void init(const al::ActorInitInfo &);
-    virtual void updateLinkedTrans(const sead::Vector3f &);
-    virtual bool receiveMsg(const al::SensorMsg *, al::HitSensor *, al::HitSensor *);
+    virtual void init(const al::ActorInitInfo&);
+    virtual void updateLinkedTrans(const sead::Vector3f&);
+    virtual bool receiveMsg(const al::SensorMsg*, al::HitSensor*, al::HitSensor*);
 
     void exeWait();
     void onConnectRailBlock();

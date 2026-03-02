@@ -20,6 +20,8 @@ namespace al {
         return sead::IsDerivedFrom<SensorMsg##name>(pMsg);              \
     }
 
+    void invalidateHitSensors(LiveActor *);
+
     void setSensorRadius(LiveActor *, const char *, f32);
     void setSensorRadius(LiveActor *, f32);
     f32 getSensorRadius(const LiveActor *, const char *);
@@ -43,6 +45,8 @@ namespace al {
     bool isMsgSink(const SensorMsg*);
 
     bool isMsgShowModel(const SensorMsg*);
+
+    bool isMsgTouchAssistTrig(const SensorMsg *);
 
     SENSOR_MSG_CLASS(EnemyAttackKnockDown);
     SENSOR_MSG_CLASS(EnemyAttackBoomerang);

@@ -1,10 +1,12 @@
 #pragma once
 
+#include <math/seadVector.h>
+
 namespace al {
     class ClippingJudge;
     class LiveActor;
 
-    void addToHostActorClipping(LiveActor *, const LiveActor *);
+    void addToHostActorClipping(LiveActor*, const LiveActor*);
 
     ClippingJudge* getClippingJudge(LiveActor*);
 
@@ -17,4 +19,6 @@ namespace al {
     void offDrawClipping(LiveActor*);
     void onUseCameraClippingPos(LiveActor*);
     void offUseCameraClippingPos(LiveActor*);
-};
+
+    bool tryExpandClippingByShadowLength(LiveActor*, sead::Vector3f*);
+};  // namespace al

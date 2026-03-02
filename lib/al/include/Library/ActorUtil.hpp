@@ -1,5 +1,6 @@
 #pragma once
 
+#include "Library/Light/LightUtil.hpp"
 #include "Library/LiveActor/Util/ActorActionUtil.hpp"
 #include "Library/LiveActor/Util/ActorAnimUtil.hpp"
 #include "Library/LiveActor/Util/ActorClippingUtil.hpp"
@@ -12,5 +13,5 @@
 #include "Library/LiveActor/Util/ActorResourceUtil.hpp"
 #include "Library/LiveActor/Util/ActorSceneUtil.hpp"
 #include "Library/LiveActor/Util/ActorSensorUtil.hpp"
-#include "Library/Light/LightUtil.hpp"
 #include "Library/Shadow/Common/ShadowUtil.hpp"
+#include "Library/StageSwitch/StageSwitchFunc.hpp"
