@@ -7,12 +7,13 @@
 #include "MapObj/BlockEmpty.hpp"
 #include "MapObj/ExplosionComboCounterHolder.hpp"
 #include "MapObj/SnowCover.hpp"
+#include "Project/Collision/CollisionPartsKeeperUtil.hpp"
+#include "System/GameDataFunction.hpp"
+#include "System/GameDataHolderAccessor.hpp"
 #include "Util/AreaObjUtil.hpp"
 #include "Util/ControlUserUtil.hpp"
 #include "Util/ItemUtil.hpp"
 #include "Util/ScoreUtil.hpp"
-#include "System/GameDataHolderAccessor.hpp"
-#include "System/GameDataFunction.hpp"
 #include "heap/seadMemBlock.h"
 
 namespace {
@@ -79,10 +80,54 @@ void BlockPow::killBySwitch() {
     if (GameDataFunction::isSingleMode(accessor)) {
         if (mEmptyBlock != nullptr && al::isAlive(mEmptyBlock)) {
             mEmptyBlock->makeActorDead();
-        }  
+        }
     }
 
     LiveActor::kill();
+}
+
+void BlockPow::respawn() {
+    if (al::isDead(this)) {
+        makeActorAppeared();
+    }
+
+    al::setNerve(this, &NrvBlockPow.Wait);
+    al::showModelIfHide(this);
+    al::onCollide(this);
+    al::validateCollisionParts(this);
+    al::validateHitSensors(this);
+    al::validateClipping(this);
+    al::setSensorRadius(this, "Explosion", 0.0f);
+
+    if (mSnowCover != nullptr) {
+        mSnowCover->respawn();
+    }
+
+    if (mEmptyBlock != nullptr) {
+        if (al::isAlive(mEmptyBlock)) {
+            mEmptyBlock->makeActorDead();
+        }
+    }
+}
+
+void BlockPow::attackSensor(al::HitSensor* pSender, al::HitSensor* pReceiver) {
+    if (!al::isNerve(this, &NrvBlockPow.Wait)) {
+        if (!al::isSensorPlayer(pReceiver)) {
+            if (al::isSensorName(pSender, "Explosion")) {
+                al::sendMsgExplosion(pReceiver, pSender, mComboCounter);
+            }
+        }
+    }
+}
+
+// BlockPow::receiveMsg
+
+void BlockPow::startExplosion(bool a1) {
+    al::startAction(this, a1 ? "ReactionHipDrop" : "Reaction");
+    al::invalidateHitSensors(this);
+    al::invalidateClipping(this);
+    al::setNerve(this, &NrvBlockPow.Reaction);
+    al::onStageSwitch(this, "SwitchKnockOn");
 }
 
 bool BlockPow::receiveMsgScreenPoint(const al::SensorMsg* pMsg, al::ScreenPointer* pPointer, al::ScreenPointTarget* pTarget) {

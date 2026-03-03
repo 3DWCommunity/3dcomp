@@ -3,6 +3,7 @@
 #include <prim/seadRuntimeTypeInfo.h>
 
 namespace al {
+    class ComboCounter;
     class HitSensor;
     class LiveActor;
 
@@ -10,23 +11,24 @@ namespace al {
         SEAD_RTTI_BASE(SensorMsg)
     };
 
-    #define SENSOR_MSG_CLASS(name)                                      \
-    class SensorMsg##name : public SensorMsg {                          \
-        SEAD_RTTI_OVERRIDE(SensorMsg##name, SensorMsg)                  \
+#define SENSOR_MSG_CLASS(name)                                                                                                                       \
+    class SensorMsg##name : public SensorMsg {                                                                                                       \
+        SEAD_RTTI_OVERRIDE(SensorMsg##name, SensorMsg)                                                                                               \
     };
 
-    #define SENSOR_MSG_CHECK(name)                                      \
-    bool isMsg##name(const SensorMsg* pMsg) {                           \
-        return sead::IsDerivedFrom<SensorMsg##name>(pMsg);              \
+#define SENSOR_MSG_CHECK(name)                                                                                                                       \
+    bool isMsg##name(const SensorMsg* pMsg) {                                                                                                        \
+        return sead::IsDerivedFrom< SensorMsg##name >(pMsg);                                                                                         \
     }
 
-    void invalidateHitSensors(LiveActor *);
+    void validateHitSensors(LiveActor*);
+    void invalidateHitSensors(LiveActor*);
 
-    void setSensorRadius(LiveActor *, const char *, f32);
-    void setSensorRadius(LiveActor *, f32);
-    f32 getSensorRadius(const LiveActor *, const char *);
-    f32 getSensorRadius(const LiveActor *, int);
-    f32 getSensorRadius(const LiveActor *);
+    void setSensorRadius(LiveActor*, const char*, f32);
+    void setSensorRadius(LiveActor*, f32);
+    f32 getSensorRadius(const LiveActor*, const char*);
+    f32 getSensorRadius(const LiveActor*, int);
+    f32 getSensorRadius(const LiveActor*);
 
     bool isSensorSimple(const HitSensor*);
     void updateHitSensorsAll(LiveActor*);
@@ -34,7 +36,7 @@ namespace al {
 
     HitSensor* getHitSensor(const LiveActor*, const char*);
 
-    bool isMsgPlayerInvincibleTouch(const SensorMsg *);
+    bool isMsgPlayerInvincibleTouch(const SensorMsg*);
 
     bool isMsgFloorTouch(const SensorMsg*);
 
@@ -46,7 +48,13 @@ namespace al {
 
     bool isMsgShowModel(const SensorMsg*);
 
-    bool isMsgTouchAssistTrig(const SensorMsg *);
+    bool isMsgTouchAssistTrig(const SensorMsg*);
+
+    bool isSensorPlayer(const HitSensor*);
+
+    bool isSensorName(const HitSensor*, const char*);
+
+    bool sendMsgExplosion(HitSensor*, HitSensor*, ComboCounter*);
 
     SENSOR_MSG_CLASS(EnemyAttackKnockDown);
     SENSOR_MSG_CLASS(EnemyAttackBoomerang);
