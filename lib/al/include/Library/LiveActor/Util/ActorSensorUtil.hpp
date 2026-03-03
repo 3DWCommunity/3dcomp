@@ -24,6 +24,9 @@ namespace al {
     void validateHitSensors(LiveActor*);
     void invalidateHitSensors(LiveActor*);
 
+    void validateHitSensor(LiveActor*, const char*);
+    void invalidateHitSensor(LiveActor*, const char*);
+
     void setSensorRadius(LiveActor*, const char*, f32);
     void setSensorRadius(LiveActor*, f32);
     f32 getSensorRadius(const LiveActor*, const char*);

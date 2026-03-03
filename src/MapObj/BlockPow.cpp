@@ -182,5 +182,44 @@ void BlockPow::exeWait() {
     }
 }
 
+void BlockPow::exeReaction() {
+    if (al::isFirstStep(this)) {
+        al::setSensorRadius(this, "Explosion", 200.0f);
+        al::validateHitSensor(this, "Explosion");
+        al::startHitReaction(this, _171 ? "爆発[水中]" : "爆発");
+    }
+
+    al::requestPrePassLightColor(this, mIsWideRangeLight ? "爆発[広範囲]" : "爆発", cLightColor);
+    bool val = _171 == 0;
+    f32 v4 = cSensorRadius[val];
+    f32 radius = al::getSensorRadius(this, "Explosion");
+
+    if (v4 <= radius) {
+        // empty conditional
+    } else {
+        al::setSensorRadius(this, "Explosion", radius + (!_171 ? 15.0f : 10.0f));
+    }
+
+    if (al::isActionEnd(this)) {
+        if (mIsAppearEmpty) {
+            al::copyPose(mEmptyBlock, this);
+            mEmptyBlock->appear();
+        }
+
+        al::setNerve(this, &NrvBlockPow.Empty);
+    }
+}
+
+// BlockPow::exeWaitEnd
+
+void BlockPow::exeEmpty() {
+    if (al::isFirstStep(this)) {
+        al::invalidateHitSensors(this);
+        al::invalidateCollisionParts(this);
+    }
+
+    al::copyPose(mEmptyBlock, this);
+}
+
 BlockPow::~BlockPow() {
 }
