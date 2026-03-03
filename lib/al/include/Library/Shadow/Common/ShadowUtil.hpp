@@ -11,6 +11,8 @@ namespace al {
     void hideShadowDepth(LiveActor*);
     void showShadowDepth(LiveActor*);
 
-    void setShadowFixed(LiveActor * , bool);
-    
-};
+    void setShadowFixed(LiveActor*, bool);
+
+    void setShadowDropLength(LiveActor*, f32, const char*);
+
+};  // namespace al

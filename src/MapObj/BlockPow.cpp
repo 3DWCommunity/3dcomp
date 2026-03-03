@@ -131,9 +131,9 @@ void BlockPow::startExplosion(bool a1) {
 }
 
 bool BlockPow::receiveMsgScreenPoint(const al::SensorMsg* pMsg, al::ScreenPointer* pPointer, al::ScreenPointTarget* pTarget) {
-    al::IUseStageSwitch* sw = (al::IUseStageSwitch*)this;
+    al::IUseStageSwitch* sw = (al::IUseStageSwitch*)(al::LiveActor*)this;
 
-    if (al::isValidStageSwitch(sw, "EnableKnockSwitch") && !al::isOnStageSwitch(this, "EnableKnockSwitch") || !isNerve(this, &NrvBlockPow.Wait) ||
+    if ((al::isValidStageSwitch(sw, "EnableKnockSwitch") && !al::isOnStageSwitch(sw, "EnableKnockSwitch")) || !isNerve(this, &NrvBlockPow.Wait) ||
         !al::isMsgTouchAssistTrig(pMsg)) {
         return false;
     }
@@ -146,9 +146,9 @@ bool BlockPow::receiveMsgScreenPoint(const al::SensorMsg* pMsg, al::ScreenPointe
     al::setNerve(this, &NrvBlockPow.Reaction);
     al::onStageSwitch(this, "SwitchKockOn");
     rc::addScoreByFactor(this, pPointer, "壊れ", 0.0f, 0);
+
     return true;
 }
-
 void BlockPow::onConnectRailBlock() {
     _170 = 1;
     al::setShadowFixed(this, false);

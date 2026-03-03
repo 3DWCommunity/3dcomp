@@ -53,6 +53,8 @@ namespace al {
 
     bool isMsgTouchAssistTrig(const SensorMsg*);
 
+    bool isMsgLaserAttack(const al::SensorMsg*);
+
     bool isSensorPlayer(const HitSensor*);
 
     bool isSensorName(const HitSensor*, const char*);
