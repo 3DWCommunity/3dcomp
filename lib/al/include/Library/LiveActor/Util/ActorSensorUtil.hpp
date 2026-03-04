@@ -39,7 +39,11 @@ namespace al {
 
     HitSensor* getHitSensor(const LiveActor*, const char*);
 
+    bool isMsgPlayerHipDropAll(const SensorMsg*);
+
     bool isMsgPlayerInvincibleTouch(const SensorMsg*);
+
+    bool isMsgPlayerFireBallAttack(const SensorMsg*);
 
     bool isMsgFloorTouch(const SensorMsg*);
 
@@ -60,6 +64,8 @@ namespace al {
     bool isSensorName(const HitSensor*, const char*);
 
     bool sendMsgExplosion(HitSensor*, HitSensor*, ComboCounter*);
+
+    bool sendMsgPlayerHipDrop(HitSensor*, HitSensor*, ComboCounter*);
 
     SENSOR_MSG_CLASS(EnemyAttackKnockDown);
     SENSOR_MSG_CLASS(EnemyAttackBoomerang);

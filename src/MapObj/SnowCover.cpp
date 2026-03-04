@@ -1,6 +1,10 @@
 #include "MapObj/SnowCover.hpp"
 #include "Library/ActorUtil.hpp"
+#include "Library/HitSensor/HitSensorKeeper.hpp"
 #include "Library/Nerve/NerveSetup.hpp"
+#include "System/GameDataFunction.hpp"
+#include "System/GameDataHolderAccessor.hpp"
+#include "Util/ProjectMsgUtil.hpp"
 #include <prim/seadSafeString.h>
 
 namespace {
@@ -29,7 +33,31 @@ void SnowCover::respawn() {
     }
 }
 
-// SnowCover::receiveMsg
+bool SnowCover::receiveMsg(const al::SensorMsg* pMsg, al::HitSensor* pSender, al::HitSensor* pReceiver) {
+    if (!al::isNerve(this, &NrvSnowCover.Wait)) {
+        return false;
+    }
+
+    if (al::isMsgPlayerFireBallAttack(pMsg)) {
+        al::setNerve(this, &NrvSnowCover.Thaw);
+        return true;
+    }
+
+    GameDataHolderAccessor accessor(this);
+    if (GameDataFunction::isSingleMode(accessor) && _158) {
+        if (al::isMsgPlayerHipDropAll(pMsg)) {
+            auto sensor = _158->mHitSensorKeeper->getSensor("Body");
+
+            if (sensor != nullptr) {
+                if (al::sendMsgPlayerHipDrop(sensor, pSender, rc::tryGetMsgComboCount(pMsg))) {
+                    return true;
+                }
+            }
+        }
+    }
+
+    return false;
+}
 
 void SnowCover::tryBreak() {
     if (!al::isDead(this) && al::isNerve(this, &NrvSnowCover.Wait)) {
