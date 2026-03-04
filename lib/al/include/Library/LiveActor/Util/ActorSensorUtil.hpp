@@ -45,6 +45,8 @@ namespace al {
 
     bool isMsgPlayerFireBallAttack(const SensorMsg*);
 
+    bool isMsgPlayerGiantTouch(const al::SensorMsg*);
+
     bool isMsgFloorTouch(const SensorMsg*);
 
     bool isMsgAskSafetyPoint(const SensorMsg*);
@@ -62,6 +64,8 @@ namespace al {
     bool isSensorPlayer(const HitSensor*);
 
     bool isSensorName(const HitSensor*, const char*);
+
+    bool isMsgDokanBazookaAttack(const al::SensorMsg*);
 
     bool sendMsgExplosion(HitSensor*, HitSensor*, ComboCounter*);
 

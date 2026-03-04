@@ -3,21 +3,24 @@
 #include <math/seadMatrix.h>
 
 namespace al {
-class LiveActor;
+    class LiveActor;
 
-void tryInitFixedModelGpuBuffer(LiveActor*);
+    void tryInitFixedModelGpuBuffer(LiveActor*);
 
-bool isHideModel(const LiveActor*);
+    bool isHideModel(const LiveActor*);
 
-void hideModel(LiveActor*);
-void showModel(LiveActor*);
+    void hideModel(LiveActor*);
+    void showModel(LiveActor*);
 
-void showModelIfHide(LiveActor*);
-void hideModelIfShow(LiveActor*);
+    void showModelIfHide(LiveActor*);
+    void hideModelIfShow(LiveActor*);
 
-bool isExistModel(const LiveActor *);
+    bool isExistModel(const LiveActor*);
 
-void setNeedSetBaseMtxAndCalcAnimFlag(LiveActor*, bool);
+    void setNeedSetBaseMtxAndCalcAnimFlag(LiveActor*, bool);
 
-sead::Matrix34f* getJointMtxPtr(const LiveActor*, const char*);
+    sead::Matrix34f* getJointMtxPtr(const LiveActor*, const char*);
+
+    void updateMaterialCodeWater(LiveActor*);
+
 }  // namespace al
