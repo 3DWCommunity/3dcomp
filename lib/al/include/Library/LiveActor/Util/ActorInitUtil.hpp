@@ -34,4 +34,6 @@ namespace al {
 
     void registerSubActorSyncClipping(LiveActor*, LiveActor*, bool);
 
+    void initActor(LiveActor*, const ActorInitInfo&);
+
 }  // namespace al

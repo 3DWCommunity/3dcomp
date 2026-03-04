@@ -2,6 +2,7 @@
 
 #include "Util/AreaObjUtil.hpp"
 #include "Util/ControlUserUtil.hpp"
+#include "Util/DrcUtil.hpp"
 #include "Util/ItemUtil.hpp"
 #include "Util/PlayerUtil.hpp"
 #include "Util/ProjectMsgUtil.hpp"
