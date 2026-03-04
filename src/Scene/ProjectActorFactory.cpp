@@ -25,7 +25,7 @@ const al::NameToCreator< al::CreationFuncPtr > cCreateTable[0x1CB] = {{"AllDeadW
                                                                       {"BlockBrickBreakableCourseSelect", nullptr},
                                                                       {"BlockChoiceWatcher", nullptr},
                                                                       {"BlockEmpty", al::createActorFunction< BlockEmpty >},
-                                                                      {"BlockEmptyCourseSelect", nullptr},
+                                                                      {"BlockEmptyCourseSelect", al::createActorFunction< BlockEmptyCourseSelect >},
                                                                       {"BlockHard", nullptr},
                                                                       {"BlockHardLaserOnly", nullptr},
                                                                       {"BlockPow", al::createActorFunction< BlockPow >},

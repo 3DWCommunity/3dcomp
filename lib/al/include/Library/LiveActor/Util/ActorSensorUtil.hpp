@@ -47,6 +47,8 @@ namespace al {
 
     bool isMsgPlayerGiantTouch(const al::SensorMsg*);
 
+    bool isMsgPlayerUpperPunch(const al::SensorMsg*);
+
     bool isMsgFloorTouch(const SensorMsg*);
 
     bool isMsgAskSafetyPoint(const SensorMsg*);
