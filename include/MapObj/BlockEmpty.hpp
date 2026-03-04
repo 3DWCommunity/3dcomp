@@ -4,7 +4,7 @@
 
 class BlockEmpty : public al::LiveActor {
 public:
-    BlockEmpty(const char*, const char*);
+    BlockEmpty(const char*, const char* pOther = "BlockEmpty");
 
     virtual ~BlockEmpty();
     virtual void init(const al::ActorInitInfo&);
