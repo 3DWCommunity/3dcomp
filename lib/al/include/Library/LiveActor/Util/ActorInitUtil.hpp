@@ -27,4 +27,9 @@ namespace al {
     void initActorSuffix(LiveActor*, const ActorInitInfo&, const char*);
 
     void initCreateActorWithPlacementInfo(LiveActor*, const ActorInitInfo&);
+
+    void initSubActorKeeperNoFile(LiveActor*, const ActorInitInfo&, int);
+
+    void registerSubActorSyncClipping(LiveActor*, LiveActor*, bool);
+
 }  // namespace al
