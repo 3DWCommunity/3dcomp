@@ -19,6 +19,8 @@ namespace al {
     bool isObjectNameSubStr(const ActorInitInfo&, const char*);
     bool isObjectNameSubStr(const PlacementInfo&, const char*);
 
+    bool tryGetStringArg(const char**, const ActorInitInfo&, const char*);
+
     bool tryGetClassName(const char**, const ActorInitInfo&);
     bool tryGetClassName(const char**, const PlacementInfo&);
     bool tryGetPlacementInfoByKey(PlacementInfo*, const PlacementInfo&, const char*);
