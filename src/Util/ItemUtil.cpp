@@ -6,6 +6,77 @@
 #include "Project/Base/StringUtil.hpp"
 
 namespace rc {
+    void initItemByHostInfo(al::LiveActor* pActor, const al::ActorInitInfo& rInfo, int a3) {
+        pActor->initItemKeeper(a3);
+        rc::addItemByHostInfo(pActor, rInfo, nullptr, nullptr);
+    }
+
+    // https://decomp.me/scratch/nkzfr
+    void addItemByHostInfo(al::LiveActor* pActor, const al::ActorInitInfo& rInfo, const char* a3, const char* a4) {
+        const char* type = "Dummy";
+        al::tryGetStringArg(&type, rInfo, "ItemType");
+
+        const char* str = "コインx1[自動取得]";
+
+        if (al::isEqualString(type, "Coin")) {
+            str = "コインx1[自動取得]";
+        } else if (al::isEqualString(type, "Coin10")) {
+            str = "コインx1[自動取得＆高速出現]";
+        } else if (al::isEqualString(type, "CoinInfinity")) {
+            str = "コインx1[自動取得＆高速出現]";
+        } else if (al::isEqualString(type, "CoinRandom10")) {
+            str = "コインx1[飛出し出現]";
+        } else if (al::isEqualString(type, "Coinx3")) {
+            str = "コインx3[自動取得]";
+        } else if (al::isEqualString(type, "KinokoOneUp")) {
+            str = "1UPキノコ";
+        } else if (al::isEqualString(type, "KinokoSuper")) {
+            str = "スーパーキノコ";
+        } else if (al::isEqualString(type, "SuperBell")) {
+            str = "スーパーベル";
+        } else if (al::isEqualString(type, "FireFlower")) {
+            str = "ファイアフラワー";
+        } else if (al::isEqualString(type, "SuperLeaf")) {
+            str = "スーパーこのは";
+        } else if (al::isEqualString(type, "BoomerangFlower")) {
+            str = "ブーメランフラワー";
+        } else if (al::isEqualString(type, "SuperStar")) {
+            str = "スーパースター";
+        } else if (al::isEqualString(type, "Ball")) {
+            str = "ボール";
+        } else if (al::isEqualString(type, "Bomb")) {
+            str = "バクダン";
+        } else if (al::isEqualString(type, "CoinBlow")) {
+            str = "コインx1";
+        } else if (al::isEqualString(type, "GreenStar")) {
+            str = "グリーンスター";
+        } else if (al::isEqualString(type, "DoubleMario")) {
+            str = "ダブルマリオ";
+        } else if (al::isEqualString(type, "KinokoBig")) {
+            str = "巨大キノコ";
+        } else if (al::isEqualString(type, "AssistLeaf")) {
+            str = "無敵このは";
+        } else if (al::isEqualString(type, "SuperBellSpecial")) {
+            str = "まねきネコベル";
+        } else if (al::isEqualString(type, "CoinConcentricCircle")) {
+            str = "同心円コイン";
+        } else if (al::isEqualString(type, "CoinBlow30")) {
+            str = "コインx30";
+        } else if (al::isEqualString(type, "DoorKey")) {
+            str = "DoorKey";
+        } else if (al::isEqualString(type, "KinokoTreasure")) {
+            str = "KinokoTreasure";
+        } else if (al::isEqualString(type, "GoalItem")) {
+            str = "GoalItem";
+        } else if (al::isEqualString(type, "WhiteBell")) {
+            str = "WhiteBell";
+        } else if (al::isEqualString(type, "Shards")) {
+            str = "Shards";
+        }
+
+        al::addItem(pActor, rInfo, str, a3, a4, 0);
+    }
+
     int tryInitItemByHostInfo(al::LiveActor* pActor, const al::ActorInitInfo& rInfo, int a3) {
         const char* type = "None";
         al::tryGetStringArg(&type, rInfo, "ItemType");
