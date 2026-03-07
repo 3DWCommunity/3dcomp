@@ -11,8 +11,7 @@ namespace rc {
         rc::addItemByHostInfo(pActor, rInfo, nullptr, nullptr);
     }
 
-    // https://decomp.me/scratch/nkzfr
-    void addItemByHostInfo(al::LiveActor* pActor, const al::ActorInitInfo& rInfo, const char* a3, const char* a4) {
+      void addItemByHostInfo(al::LiveActor* pActor, const al::ActorInitInfo& rInfo, const char* a3, const char* a4) {
         const char* type = "Dummy";
         al::tryGetStringArg(&type, rInfo, "ItemType");
 
@@ -22,10 +21,10 @@ namespace rc {
             str = "コインx1[自動取得]";
         } else if (al::isEqualString(type, "Coin10")) {
             str = "コインx1[自動取得＆高速出現]";
-        } else if (al::isEqualString(type, "CoinInfinity")) {
-            str = "コインx1[自動取得＆高速出現]";
         } else if (al::isEqualString(type, "CoinRandom10")) {
             str = "コインx1[飛出し出現]";
+        } else if (al::isEqualString(type, "CoinInfinity")) {
+            str = "コインx1[自動取得＆高速出現]";
         } else if (al::isEqualString(type, "Coinx3")) {
             str = "コインx3[自動取得]";
         } else if (al::isEqualString(type, "KinokoOneUp")) {
@@ -75,7 +74,7 @@ namespace rc {
         }
 
         al::addItem(pActor, rInfo, str, a3, a4, 0);
-    }
+    }  
 
     int tryInitItemByHostInfo(al::LiveActor* pActor, const al::ActorInitInfo& rInfo, int a3) {
         const char* type = "None";
