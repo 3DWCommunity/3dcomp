@@ -5,6 +5,9 @@
 namespace al {
     class ClippingJudge;
     class LiveActor;
+    class ActorInitInfo;
+
+    void initActorClipping(LiveActor*, const ActorInitInfo&);
 
     void addToHostActorClipping(LiveActor*, const LiveActor*);
 

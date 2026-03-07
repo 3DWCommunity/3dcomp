@@ -20,7 +20,13 @@ namespace al {
 
     void initLinksActor(LiveActor*, const ActorInitInfo&, const char*, s32);
 
+    void initActorPoseTRSV(LiveActor*);
+    void initActorPoseTRMSV(LiveActor*);
+    void initActorPoseTFSV(LiveActor*);
+    void initActorPoseTFGSV(LiveActor*);
     void initActorPoseTQSV(LiveActor*);
+    void initActorSRT(LiveActor*, const ActorInitInfo&);
+    void initActorSRT_ParentY(LiveActor*, const ActorInitInfo&);
 
     void initMapPartsActor(LiveActor*, const ActorInitInfo&, const char*, int);
 
@@ -35,5 +41,11 @@ namespace al {
     void registerSubActorSyncClipping(LiveActor*, LiveActor*, bool);
 
     void initActor(LiveActor*, const ActorInitInfo&);
+
+    void initExecutorWatchObj(LiveActor*, const ActorInitInfo&);
+
+    void initActorAudioKeeperWithout3D(LiveActor*, const ActorInitInfo&, const char*, const char*);
+
+    void initActorSceneInfo(LiveActor*, const ActorInitInfo&);
 
 }  // namespace al
