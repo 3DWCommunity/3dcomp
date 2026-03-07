@@ -2,7 +2,7 @@
 
 Decompilation of Super Mario 3DW + BF Kiosk Demo.
 
-<img src ="https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/3DWCommunity/3dcomp/main/data/progress.json&style=flat"/>
+<img src ="https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/3DWCommunity/3dcomp/main/data/progress.json&style=flat"/> <img src ="https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/3DWCommunity/3dcomp/main/data/functions.json&style=flat"/>
 
 # Building
 
