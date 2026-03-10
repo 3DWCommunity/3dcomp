@@ -7,7 +7,7 @@ import sys, os
 
 from report_pb2 import Report, Measures, ReportUnit, ReportUnitMetadata, ReportItem, ReportItemMetadata
 
-data = yaml.load(open("data/units.yaml"), Loader=yaml.CLoader)
+data = yaml.load(open("data/units.yml"), Loader=yaml.CLoader)
 
 def get_measures(unit_name=None):
     funcs = data[unit_name][".text"] if unit_name else reduce(lambda a,b: a+b, [unit[".text"] for unit in data.values()])
