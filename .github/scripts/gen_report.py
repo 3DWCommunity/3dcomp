@@ -130,10 +130,6 @@ def main():
     parser.add_argument("--output", "-o", help="Output JSON file")
     args = parser.parse_args()
 
-    if args.version != "1.0":
-        print(f"Unsupported version: {args.version}. Only '1.0' is supported.")
-        sys.exit(1)
-
     report = build_report()
 
     from google.protobuf.json_format import MessageToJson
