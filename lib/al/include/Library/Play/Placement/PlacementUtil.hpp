@@ -41,4 +41,8 @@ namespace al {
     bool tryGetArg(int*, const ActorInitInfo&, const char*);
     bool tryGetArg(f32*, const ActorInitInfo&, const char*);
     bool tryGetArg(bool*, const ActorInitInfo&, const char*);
+
+    bool getChildLinkTR(sead::Vector3f*, sead::Vector3f*, const ActorInitInfo&, const char*, int);
+
+    void getRotate(sead::Vector3f*, const PlacementInfo&);
 }  // namespace al

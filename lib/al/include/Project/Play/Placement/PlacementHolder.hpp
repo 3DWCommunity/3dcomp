@@ -3,19 +3,19 @@
 #include <basis/seadTypes.h>
 
 namespace al {
-struct PlacementInfo;
+    struct PlacementInfo;
 
-class PlacementHolder {
-public:
-    PlacementHolder();
+    class PlacementHolder {
+    public:
+        PlacementHolder();
 
-    void init(const PlacementInfo&);
+        void init(const PlacementInfo&);
 
-    const char* _0;
-    const char* _8;
-    const char* _10;
-    const char* _18;
-    s32 _20;
-    s32 _24;
-};
+        const char* _0;
+        const char* _8;
+        const char* _10;
+        const char* _18;
+        s32 _20;
+        s32 _24;
+    };
 }  // namespace al

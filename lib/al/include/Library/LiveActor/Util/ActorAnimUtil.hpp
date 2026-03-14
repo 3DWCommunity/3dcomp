@@ -15,6 +15,8 @@ namespace al {
     void setVisAnimFrameAndStop(LiveActor*, f32);
     void setVisAnimFrameAndStopEnd(LiveActor*);
     void startVisAnimAndSetFrameAndStop(LiveActor*, const char*, f32);
+    void startVisAnim(LiveActor*, const char*);
+    bool tryStartVisAnimIfExist(LiveActor*, const char*);
 
     void startSklAnim(LiveActor*, const char*);
     void startSklAnimInterpole(LiveActor*, const char*, const char*);
@@ -25,6 +27,8 @@ namespace al {
     f32 getMtpAnimFrameMax(const LiveActor*, const char*);
     void setMtpAnimFrameAndStop(LiveActor*, f32);
     void setMtpAnimFrameAndStopEnd(LiveActor*);
+    void setMtpAnimFrameRate(const LiveActor*, const char*);
+    bool tryStartMtpAnimIfExist(LiveActor*, const char*);
     void startMclAnim(LiveActor*, const char*);
     bool tryStartMclAnimIfExist(LiveActor*, const char*);
     bool isMclAnimExist(const LiveActor*, const char*);
@@ -35,4 +39,5 @@ namespace al {
     bool isMclAnimEnd(const LiveActor*);
     bool isMclAnimOneTime(const LiveActor*, const char*);
     bool isMclAnimOneTime(const LiveActor*);
+
 };  // namespace al

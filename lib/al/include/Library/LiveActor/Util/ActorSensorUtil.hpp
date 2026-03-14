@@ -63,6 +63,8 @@ namespace al {
 
     bool isMsgLaserAttack(const al::SensorMsg*);
 
+    bool isMsgPlayerDisregard(const al::SensorMsg*);
+
     bool isSensorPlayer(const HitSensor*);
 
     bool isSensorName(const HitSensor*, const char*);
