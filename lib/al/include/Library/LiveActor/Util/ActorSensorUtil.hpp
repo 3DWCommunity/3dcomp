@@ -59,6 +59,8 @@ namespace al {
 
     bool isMsgShowModel(const SensorMsg*);
 
+    bool isMsgTouchAssist(const SensorMsg*);
+
     bool isMsgTouchAssistTrig(const SensorMsg*);
 
     bool isMsgLaserAttack(const al::SensorMsg*);
@@ -69,9 +71,17 @@ namespace al {
 
     bool isSensorName(const HitSensor*, const char*);
 
+    bool isSensorEnemyBody(const HitSensor*);
+
     bool isMsgDokanBazookaAttack(const al::SensorMsg*);
 
+    bool isSensorEnemyAttack(const HitSensor*);
+
     bool sendMsgExplosion(HitSensor*, HitSensor*, ComboCounter*);
+
+    bool sendMsgEnemyAttack(HitSensor*, HitSensor*);
+
+    bool sendMsgPushAndKillVelocityToTarget(LiveActor*, HitSensor*, HitSensor*);
 
     bool sendMsgPlayerHipDrop(HitSensor*, HitSensor*, ComboCounter*);
 

@@ -48,18 +48,18 @@ public:
     void exesub_710015E040();
     void exesub_710015E090();
 
-    u8 _144;
-    u8 _145;
-    u8 _146;
-    u8 _147;
-    f32 _148;
-    f32 _14C;
-    u32 _150;
+    u8 _144 = 0;
+    u8 _145 = 0;
+    u8 _146 = 0;
+    u8 _147 = 0;
+    f32 _148 = 1.0f;
+    f32 _14C = 1.0f;
+    u32 _150 = 0;
     sead::Vector3f _154;
-    FlyerStateChase* mStateChase;            // 0x160
-    FlyerStateFindPlayer* mStateFindPlayer;  // 0x168
-    FlyerStateReturnArea* mStateReturnArea;  // 0x170
-    TargetFinder* mTargetFinder;             // 0x178
-    al::AreaObjGroup* mLinkAreaGroup;        // 0x180
-    al::HitSensor* _188;
+    FlyerStateChase* mStateChase = nullptr;            // 0x160
+    FlyerStateFindPlayer* mStateFindPlayer = nullptr;  // 0x168
+    FlyerStateReturnArea* mStateReturnArea = nullptr;  // 0x170
+    TargetFinder* mTargetFinder = nullptr;             // 0x178
+    al::AreaObjGroup* mLinkAreaGroup = nullptr;        // 0x180
+    al::HitSensor* _188 = nullptr;
 };

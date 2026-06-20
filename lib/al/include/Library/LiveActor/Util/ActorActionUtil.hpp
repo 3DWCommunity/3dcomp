@@ -26,4 +26,6 @@ namespace al {
     void startNerveAction(LiveActor*, const char*);
 
     void startHitReactionDisappear(const LiveActor*);
+
+    void startHitReactionDeath(const LiveActor*);
 };  // namespace al

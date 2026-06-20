@@ -22,4 +22,6 @@ namespace rc {
     bool isMsgForBlockAll(const al::SensorMsg*, const al::HitSensor*, const al::HitSensor*, f32);
 
     bool getMsgReturnValueForBlock(const al::SensorMsg*);
+
+    void killBySwitchAndAppearItem(al::LiveActor*, const char*);
 };  // namespace rc

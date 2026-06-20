@@ -4,6 +4,7 @@
 #include "Library/Math/MathUtil.hpp"
 #include "Library/Nerve/NerveSetup.hpp"
 #include "Project/Effect/Core/EffectUtil.hpp"
+#include "Util/ItemUtil.hpp"
 
 namespace {
     NERVE_DECL(Teresa, sub_710015E040);
@@ -29,6 +30,76 @@ namespace {
 
 static sead::Color4f qword_7101B20440;
 
+Teresa::Teresa(const char* pName) : al::LiveActor(pName) {
+    _154.x = 0.0f;
+    _154.y = 0.0f;
+    _154.z = 0.0f;
+}
+
+void Teresa::killBySwitch() {
+    rc::killBySwitchAndAppearItem(this, nullptr);
+}
+
+void Teresa::appearBySwitch() {
+    if (!al::isNerve(this, &NrvTeresa.Down)) {
+        al::setRenderStateBlendColor(this, qword_7101B20440);
+        _148 = 1.0f;
+        al::setTrans(this, _154);
+        al::startAction(this, "Appear");
+        al::startAction(al::getSubActor(this, 0), "Appear");
+        al::LiveActor::appear();
+        al::setNerve(this, &NrvTeresa.sub_710015E040);
+    }
+}
+
+void Teresa::disappearBySwitch() {
+    if (!al::isNerve(this, &NrvTeresa.Down) && !al::isNerve(this, &NrvTeresa.DisappearOutArea)) {
+        al::setNerve(this, &NrvTeresa.DisappearOutArea);
+    }
+}
+
+void Teresa::kill() {
+    al::startHitReactionDeath(this);
+    al::LiveActor::kill();
+}
+
+// Teresa::control
+
+void Teresa::attackSensor(al::HitSensor* pSender, al::HitSensor* pReceiver) {
+    if (!al::isNerve(this, &NrvTeresa.sub_710015E040) && !al::isNerve(this, &NrvTeresa.Down) && !al::isNerve(this, &NrvTeresa.Reaction) &&
+        !al::isNerve(this, &NrvTeresa.ReactionWait) && !al::isNerve(this, &NrvTeresa.ReactionAppear) &&
+        !al::isNerve(this, &NrvTeresa.DisappearOutArea)) {
+        if (al::isSensorEnemyBody(pSender) && al::isSensorEnemyBody(pReceiver)) {
+            al::sendMsgPushAndKillVelocityToTarget(this, pSender, pReceiver);
+        }
+
+        if (al::isSensorEnemyAttack(pSender) && al::isSensorPlayer(pReceiver) && al::sendMsgEnemyAttack(pReceiver, pSender)) {
+            al::setNerve(this, &NrvTeresa.AttackHit);
+        }
+    }
+}
+
+// Teresa::receiveMsg
+
+bool Teresa::receiveMsgScreenPoint(const al::SensorMsg* pMsg, al::ScreenPointer*, al::ScreenPointTarget*) {
+    if (al::isNerve(this, &NrvTeresa.Down)) {
+        return false;
+    }
+
+    if (!al::isMsgTouchAssist(pMsg)) {
+        return false;
+    }
+
+    _146 = 1;
+
+    if (!al::isNerve(this, &NrvTeresa.Reaction) && !al::isNerve(this, &NrvTeresa.ReactionWait) && !al::isNerve(this, &NrvTeresa.ReactionAppear) &&
+        !al::isNerve(this, &NrvTeresa.DisappearOutArea)) {
+        al::setNerve(this, &NrvTeresa.Reaction);
+    }
+
+    return true;
+}
+
 void Teresa::exeShyEnd() {
     if (al::isFirstStep(this)) {
         al::startAction(this, "ShyEnd");
@@ -45,6 +116,12 @@ void Teresa::exeShyEnd() {
 void Teresa::deleteShyEffect() {
     if (al::isEffectEmitting(this, "Shy")) {
         al::deleteEffect(this, "Shy");
+    }
+}
+
+void Teresa::exeAppear() {
+    if (al::isActionEnd(this)) {
+        sub_710015D060(mTargetFinder, mLinkAreaGroup);
     }
 }
 
