@@ -1,6 +1,8 @@
 #pragma once
 
+#include "Library/Item/AcquireItemFunc.hpp"
 #include "Library/Light/LightUtil.hpp"
+#include "Library/LiveActor/SubActorUtil.hpp"
 #include "Library/LiveActor/Util/ActorActionUtil.hpp"
 #include "Library/LiveActor/Util/ActorAnimUtil.hpp"
 #include "Library/LiveActor/Util/ActorClippingUtil.hpp"

@@ -16,4 +16,6 @@ namespace al {
     void addVelocityToDirection(LiveActor*, const sead::Vector3f&, f32);
 
     void scaleVelocity(LiveActor*, f32);
+
+    void faceToTarget(LiveActor*, const sead::Vector3f&);
 };  // namespace al

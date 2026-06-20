@@ -23,4 +23,10 @@ namespace al {
 
     void updateMaterialCodeWater(LiveActor*);
 
+    void setRenderStateBlendColor(LiveActor*, const sead::Color4f&);
+
+    void setCustomRenderEnable(LiveActor*, bool);
+    void setEnableDepthTest(LiveActor*, bool);
+    void setEnableDepthWrite(LiveActor*, bool);
+
 }  // namespace al

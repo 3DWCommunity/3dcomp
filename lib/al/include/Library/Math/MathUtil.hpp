@@ -44,4 +44,6 @@ namespace al {
 
     f32 getRandom(f32, f32);
 
+    f32 lerpValue(f32, f32, f32);
+
 }  // namespace al

@@ -15,4 +15,6 @@ namespace al {
 
     void setShadowDropLength(LiveActor*, f32, const char*);
 
+    void setShadowIntensityUser(LiveActor*, u8, const char*);
+
 };  // namespace al
